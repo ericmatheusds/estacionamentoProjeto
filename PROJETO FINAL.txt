@@ -1,8 +1,11 @@
 algoritmo "controleEstacionamento"
-// FunÁ„o : Este programa È respons·vel pelo controle de carros dentro de um estacionamento.
+// Fun√ß√£o : Este programa √© respons√°vel pelo controle de carros dentro de um estacionamento.
 // Autor :  Eric Matheus, Lucas, Lucas Vitor, Luan, Igor
 // Data : 08/06/2019
-// SeÁ„o de DeclaraÁıes 
+// Observa√ß√£o : Arquivo escrito para rodar em VISUALG
+
+// Se√ß√£o de Declara√ß√µes 
+
 var
 
    opcao: inteiro
@@ -25,7 +28,7 @@ var
    opcao22: inteiro
    valorGanho: real
 inicio
-// SeÁ„o de Comandos 
+// Se√ß√£o de Comandos 
 
 
    qtdVagas <- 10   //----------DELIMITA A CAPACIDADE MAXIMA DE CARROS QUE O ESTACIONAMENTO COMPORTA---------
@@ -38,10 +41,10 @@ inicio
       escreval("")
       escreva("[1]- ENTRADA          ")
       escreval("VAGAS LIVRES:",qtdvagas-qtdCarros,"/",qtdvagas)
-      escreva("[2]- SAÕDA            ")
+      escreva("[2]- SA√çDA            ")
       escreval("VALOR GANHO:R$",valorGanho,",00")
       escreval("[3]- CONSULTA")
-      escreval("[4]- CONFIGURA«AO DE VALORES")
+      escreval("[4]- CONFIGURA√áAO DE VALORES")
       escreval("[0]- SAIR")
       leia(opcao)
       
@@ -49,17 +52,17 @@ inicio
       
       se(opcao < 0) ou (opcao > 4)entao
 
-          escreval("OPERA«√O INV¡LIDA!!! DIGITE NOVAMENTE")
+          escreval("OPERA√á√ÉO INV√ÅLIDA!!! DIGITE NOVAMENTE")
           escreval(" ")
 
       fimse
       
       escolha(opcao)
-      caso 1    //---------------- OP«AO DE ENTRADA ----------------
+      caso 1    //---------------- OP√áAO DE ENTRADA ----------------
 
         opcao1 <- 1
         repita
-         se(qtdCarros < qtdvagas)entao //---------------- VERIFICA SE AINDA H¡ VAGAS LIVRES ----------------
+         se(qtdCarros < qtdvagas)entao //---------------- VERIFICA SE AINDA H√Å VAGAS LIVRES ----------------
             escreval("-----REGISTRO DE ENTRADA-----")//--------- INICIA O REGISTRO DA ENTRADA DE UM CARRO ----------
             escreval(" ")
             i <- i + 1
@@ -94,12 +97,12 @@ inicio
            ate(opcao1 >= 0)
 
        
-        caso 2  //-------- OP«AO DE SAÕDA --------
+        caso 2  //-------- OP√áAO DE SA√çDA --------
         
         opcao21 <- 1
          repita
            se(qtdCarros > 0)entao
-                escreval("-----REGISTRO DE SAÕDA-----")
+                escreval("-----REGISTRO DE SA√çDA-----")
                  escreval("")
                  escreva("ID   ")
                  escreva("NOME   ")
@@ -121,7 +124,7 @@ inicio
                         fimse
                     fimpara
                     escreval("")
-                    escreva("digite o ID para saÌda: ")  // ---------------SOLICITA ID DO CARRO DE SAIDA------------------------
+                    escreva("digite o ID para sa√≠da: ")  // ---------------SOLICITA ID DO CARRO DE SAIDA------------------------
 
                     leia(opcao2)
                   se(presenca[opcao2] =  1)entao
@@ -129,20 +132,20 @@ inicio
                     qtdCarros <- qtdCarros - 1
                     id[opcao2]  <- 0
                     limpatela
-                    escreval("-----REGISTRO DE SAÕDA-----")
+                    escreval("-----REGISTRO DE SA√çDA-----")
                     escreval("")
                     escreva("Digite o tempo(Hrs): ")// --------SOLICITA O TEMPO(HRS) QUE O CARRO PERMANECEU NO ESTACIONAMENTO-----------------
                     leia(qtdHoras)
                     limpatela
                     
-                    se(valorHora <= 0) e (valorEntrada <=0) entao //------------VERIFICA SE VALORES J¡ FORAM DEFINIDOS------------
+                    se(valorHora <= 0) e (valorEntrada <=0) entao //------------VERIFICA SE VALORES J√Å FORAM DEFINIDOS------------
                     
-                       escreval("-----REGISTRO DE SAÕDA-----")
+                       escreval("-----REGISTRO DE SA√çDA-----")
                        escreval("")
-                       escreval("VALORES N√O DEFINIDOS!!!")
+                       escreval("VALORES N√ÉO DEFINIDOS!!!")
                        escreval("DEFINA OS VALORES")
                       escreval("")
-                      escreva("valor de entrada(R$): ") //------------ OP«√O DE CONFIGURA«√O. SOLICITA VALORES DE ENTRADA E VALOR POR HORA A SER DEFINIDO --------
+                      escreva("valor de entrada(R$): ") //------------ OP√á√ÉO DE CONFIGURA√á√ÉO. SOLICITA VALORES DE ENTRADA E VALOR POR HORA A SER DEFINIDO --------
                       leia(valorEntrada)
                       escreval("")
                       escreva("valor por hora(R$): ")
@@ -151,11 +154,11 @@ inicio
 
                       repita
 
-                         escreval("-----REGISTRO DE SAÕDA-----")
+                         escreval("-----REGISTRO DE SA√çDA-----")
                          escreval("")
                          escreval("Valores definidos com sucesso")
                          escreval("")
-                         escreval("[1] - AVAN«AR ")
+                         escreval("[1] - AVAN√áAR ")
                          leia(opcao2)
                          limpatela
 
@@ -166,11 +169,11 @@ inicio
                     
                       opcao22 <- 1
                       repita
-                       escreval("-----REGISTRO DE SAÕDA-----")  //---------------APRESENTA O VALOR TOTAL A SER PAGO--------------
+                       escreval("-----REGISTRO DE SA√çDA-----")  //---------------APRESENTA O VALOR TOTAL A SER PAGO--------------
                        escreval(" ")
-                       escreval("TOTAL ¿ PAGAR: R$",valorEntrada+(qtdHoras*valorHora),",00")
+                       escreval("TOTAL √Ä PAGAR: R$",valorEntrada+(qtdHoras*valorHora),",00")
                        escreval(" ")
-                       escreva("[1] - AVAN«AR ")
+                       escreva("[1] - AVAN√áAR ")
                        leia(opcao22)
                       ate(opcao22 >= 0)
                       limpatela
@@ -179,7 +182,7 @@ inicio
                     carro[opcao2]  <- "vazio"
 
                     limpatela
-                    escreval("-----REGISTRO DE SAÕDA-----")
+                    escreval("-----REGISTRO DE SA√çDA-----")
                     escreval(" ")
                     escreval("SAIDA REGISTRADA COM SUCESSO")
                     escreval(" ")
@@ -188,17 +191,17 @@ inicio
                       nome[qtdvagas+1] <- "vazio"
                       carro[qtdvagas+1]  <- "vazio"
 
-                    para cont de opcao2 ate qtdvagas passo 1 faca //--------PASSA OS REGISTROS DE BAIXO PARA CIMA AP”S A SAÕDA DO VEICULO LISTADO ACIMA DO MESMO--------
+                    para cont de opcao2 ate qtdvagas passo 1 faca //--------PASSA OS REGISTROS DE BAIXO PARA CIMA AP√ìS A SA√çDA DO VEICULO LISTADO ACIMA DO MESMO--------
                       presenca[cont] <-  presenca[cont+1]
                       nome[cont] <- nome[cont+1]
                       carro[cont]  <- carro[cont+1]
 
                     fimpara
                     
-                   senao //--------------------------- CASO qtdCarros SEJA IGUAL A ZERO SER¡ EXIBIDO ESSA MENSAGEM  -----------------------------------
+                   senao //--------------------------- CASO qtdCarros SEJA IGUAL A ZERO SER√Å EXIBIDO ESSA MENSAGEM  -----------------------------------
                       limpatela
                       escreval(" ")
-                      escreval("N√O H¡ REGISTRO NESSA VAGA!!!")
+                      escreval("N√ÉO H√Å REGISTRO NESSA VAGA!!!")
                       escreval("")
                    fimse
                  
@@ -219,7 +222,7 @@ inicio
                      fimse
                  fimpara
                  escreval("")
-                 escreval("NAO H¡ CARROS NO ESTACIONADOS!!!")
+                 escreval("NAO H√Å CARROS NO ESTACIONADOS!!!")
                  escreval("")
              fimse
              escreva("[0] - VOLTAR ")
@@ -227,7 +230,7 @@ inicio
              limpatela
             ate(opcao21 >= 0)
 
-        caso 3       //-------- OP«√O DE CONSULTA --------
+        caso 3       //-------- OP√á√ÉO DE CONSULTA --------
 
              repita
              
@@ -260,17 +263,17 @@ inicio
               ate(opcao3 = 0)
            limpatela
 
-        caso 4       //-------- OP«√O DE CONFIGURA«√O --------
+        caso 4       //-------- OP√á√ÉO DE CONFIGURA√á√ÉO --------
 
            opcao4 <- 1
-          se(valorHora > 0) e (valorEntrada > 0)entao //----VERIFICA SE VALORES J¡ FORAM DEFINIDOS------
+          se(valorHora > 0) e (valorEntrada > 0)entao //----VERIFICA SE VALORES J√Å FORAM DEFINIDOS------
            repita
-            escreval("-------CONFIGURA«AO-------") //--------AVISO QUE VALORES JA EST√O DEFINIDOS--------
+            escreval("-------CONFIGURA√áAO-------") //--------AVISO QUE VALORES JA EST√ÉO DEFINIDOS--------
             escreval("")
-            escreval("VALORES J¡ DEFINIDOS!!!")
+            escreval("VALORES J√Å DEFINIDOS!!!")
             escreval("")
-            escreva("PRE«O DE ENTRADA:R$",valorEntrada,",00  ")
-            escreval("PRE«O POR HORA:R$",valorHora,",00")
+            escreva("PRE√áO DE ENTRADA:R$",valorEntrada,",00  ")
+            escreval("PRE√áO POR HORA:R$",valorHora,",00")
             escreval("")
             escreval("[1] - REDEFINIR   [0] - VOLTAR")
             leia(opcao4)
@@ -279,7 +282,7 @@ inicio
           fimse
 
            se(opcao4 = 1)entao
-             escreval("-------CONFIGURA«AO-------") //----CONFIGURA«√O PARA DEFINI«√O DE VALORES
+             escreval("-------CONFIGURA√áAO-------") //----CONFIGURA√á√ÉO PARA DEFINI√á√ÉO DE VALORES
              escreval("")
              escreva("valor de entrada(R$): ")
              leia(valorEntrada)
@@ -290,7 +293,7 @@ inicio
 
              repita
 
-                escreval("-------CONFIGURA«AO-------")
+                escreval("-------CONFIGURA√áAO-------")
                 escreval("")
                 escreval("Valores definidos com sucesso")
                 escreval("")
