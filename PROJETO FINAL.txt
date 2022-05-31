@@ -1,0 +1,306 @@
+algoritmo "controleEstacionamento"
+// Função : Este programa é responsável pelo controle de carros dentro de um estacionamento.
+// Autor :  Eric Matheus, Lucas, Lucas Vitor, Luan, Igor
+// Data : 08/06/2019
+// Seção de Declarações 
+var
+
+   opcao: inteiro
+   nome:vetor[1..15] de caracter
+   id:vetor[1..15] de inteiro
+   i: inteiro
+   qtdCarros: inteiro
+   carro: vetor[1..15] de caracter
+   cont: inteiro
+   presenca: vetor[1..15] de inteiro
+   opcao3: inteiro
+   opcao2: inteiro
+   opcao21: inteiro
+   opcao1: inteiro
+   qtdvagas: inteiro
+   valorEntrada: real
+   valorHora: real
+   qtdHoras: inteiro
+   opcao4: inteiro
+   opcao22: inteiro
+   valorGanho: real
+inicio
+// Seção de Comandos 
+
+
+   qtdVagas <- 10   //----------DELIMITA A CAPACIDADE MAXIMA DE CARROS QUE O ESTACIONAMENTO COMPORTA---------
+   i <- 0
+   qtdCarros <- 0
+
+   repita
+
+      escreval("-------MENU------")
+      escreval("")
+      escreva("[1]- ENTRADA          ")
+      escreval("VAGAS LIVRES:",qtdvagas-qtdCarros,"/",qtdvagas)
+      escreva("[2]- SAÍDA            ")
+      escreval("VALOR GANHO:R$",valorGanho,",00")
+      escreval("[3]- CONSULTA")
+      escreval("[4]- CONFIGURAÇAO DE VALORES")
+      escreval("[0]- SAIR")
+      leia(opcao)
+      
+      limpatela
+      
+      se(opcao < 0) ou (opcao > 4)entao
+
+          escreval("OPERAÇÃO INVÁLIDA!!! DIGITE NOVAMENTE")
+          escreval(" ")
+
+      fimse
+      
+      escolha(opcao)
+      caso 1    //---------------- OPÇAO DE ENTRADA ----------------
+
+        opcao1 <- 1
+        repita
+         se(qtdCarros < qtdvagas)entao //---------------- VERIFICA SE AINDA HÁ VAGAS LIVRES ----------------
+            escreval("-----REGISTRO DE ENTRADA-----")//--------- INICIA O REGISTRO DA ENTRADA DE UM CARRO ----------
+            escreval(" ")
+            i <- i + 1
+           qtdCarros <- qtdCarros + 1
+           id[i]  <- i
+           presenca[i] <- 1
+           escreva("Digite seu NOME: ")
+           leia(nome[i])
+
+           escreval(" ")
+           escreva("Digite o do CARRO: ")
+           leia(carro[i])
+           limpatela
+             repita
+              escreval("-----REGISTRO DE ENTRADA-----")
+              escreval(" ")
+              escreval("ENTRADA REGISTRADA COM SUCESSO")
+              escreval("")
+              escreval("[0] - VOLTAR ")
+              leia(opcao1)
+             ate(opcao1 = 0)
+            senao
+              repita
+                escreval("LIMITE DE CARROS EXCEDIDO!!! ")//---------------- AVISO DE CASO O ESTACIONAMENTO ESTEJA CHEIO ----------------
+                escreval("")
+                escreval("[0] - VOLTAR ")
+                 leia(opcao1)
+               ate(opcao1 = 0)
+            fimse
+                 limpatela
+
+           ate(opcao1 >= 0)
+
+       
+        caso 2  //-------- OPÇAO DE SAÍDA --------
+        
+        opcao21 <- 1
+         repita
+           se(qtdCarros > 0)entao
+                escreval("-----REGISTRO DE SAÍDA-----")
+                 escreval("")
+                 escreva("ID   ")
+                 escreva("NOME   ")
+                 escreva("CARRO   ")
+                 escreval("")
+
+                 para cont de 1 ate qtdvagas passo 1 faca //-------- APRESETA A LISTA DE CARROS ESTACIONADOS--------
+
+                        se(presenca[cont] = 1)entao
+                           escreva(cont,"  ")
+                           escreva(nome[cont],"  ")
+                           escreva(carro[cont],"  ")
+                           escreval("")
+                          senao
+                             escreva(cont,"  ")
+                             escreva("vazio   ")
+                             escreva("vazio   ")
+                             escreval("")
+                        fimse
+                    fimpara
+                    escreval("")
+                    escreva("digite o ID para saída: ")  // ---------------SOLICITA ID DO CARRO DE SAIDA------------------------
+
+                    leia(opcao2)
+                  se(presenca[opcao2] =  1)entao
+                    i <- i - 1
+                    qtdCarros <- qtdCarros - 1
+                    id[opcao2]  <- 0
+                    limpatela
+                    escreval("-----REGISTRO DE SAÍDA-----")
+                    escreval("")
+                    escreva("Digite o tempo(Hrs): ")// --------SOLICITA O TEMPO(HRS) QUE O CARRO PERMANECEU NO ESTACIONAMENTO-----------------
+                    leia(qtdHoras)
+                    limpatela
+                    
+                    se(valorHora <= 0) e (valorEntrada <=0) entao //------------VERIFICA SE VALORES JÁ FORAM DEFINIDOS------------
+                    
+                       escreval("-----REGISTRO DE SAÍDA-----")
+                       escreval("")
+                       escreval("VALORES NÃO DEFINIDOS!!!")
+                       escreval("DEFINA OS VALORES")
+                      escreval("")
+                      escreva("valor de entrada(R$): ") //------------ OPÇÃO DE CONFIGURAÇÃO. SOLICITA VALORES DE ENTRADA E VALOR POR HORA A SER DEFINIDO --------
+                      leia(valorEntrada)
+                      escreval("")
+                      escreva("valor por hora(R$): ")
+                      leia(valorHora)
+                      limpatela
+
+                      repita
+
+                         escreval("-----REGISTRO DE SAÍDA-----")
+                         escreval("")
+                         escreval("Valores definidos com sucesso")
+                         escreval("")
+                         escreval("[1] - AVANÇAR ")
+                         leia(opcao2)
+                         limpatela
+
+                       ate(opcao2 = 1)
+                 
+
+                    fimse
+                    
+                      opcao22 <- 1
+                      repita
+                       escreval("-----REGISTRO DE SAÍDA-----")  //---------------APRESENTA O VALOR TOTAL A SER PAGO--------------
+                       escreval(" ")
+                       escreval("TOTAL À PAGAR: R$",valorEntrada+(qtdHoras*valorHora),",00")
+                       escreval(" ")
+                       escreva("[1] - AVANÇAR ")
+                       leia(opcao22)
+                      ate(opcao22 >= 0)
+                      limpatela
+                    valorGanho <- valorGanho + valorEntrada+(qtdHoras*valorHora)
+                    nome[opcao2] <- "vazio"
+                    carro[opcao2]  <- "vazio"
+
+                    limpatela
+                    escreval("-----REGISTRO DE SAÍDA-----")
+                    escreval(" ")
+                    escreval("SAIDA REGISTRADA COM SUCESSO")
+                    escreval(" ")
+
+                      presenca[qtdvagas+1] <-  0
+                      nome[qtdvagas+1] <- "vazio"
+                      carro[qtdvagas+1]  <- "vazio"
+
+                    para cont de opcao2 ate qtdvagas passo 1 faca //--------PASSA OS REGISTROS DE BAIXO PARA CIMA APÓS A SAÍDA DO VEICULO LISTADO ACIMA DO MESMO--------
+                      presenca[cont] <-  presenca[cont+1]
+                      nome[cont] <- nome[cont+1]
+                      carro[cont]  <- carro[cont+1]
+
+                    fimpara
+                    
+                   senao //--------------------------- CASO qtdCarros SEJA IGUAL A ZERO SERÁ EXIBIDO ESSA MENSAGEM  -----------------------------------
+                      limpatela
+                      escreval(" ")
+                      escreval("NÃO HÁ REGISTRO NESSA VAGA!!!")
+                      escreval("")
+                   fimse
+                 
+               senao
+               
+                 para cont de 1 ate qtdvagas passo 1 faca //-------- APRESETA A LISTA DE CARROS ESTACIONADOS--------
+
+                     se(presenca[cont] = 1)entao
+                        escreva(cont,"  ")
+                        escreva(carro[cont],"  ")
+                        escreva(nome[cont],"  ")
+                        escreval("")
+                       senao
+                          escreva(cont,"  ")
+                          escreva("vazio   ")
+                          escreva("vazio   ")
+                          escreval("")
+                     fimse
+                 fimpara
+                 escreval("")
+                 escreval("NAO HÁ CARROS NO ESTACIONADOS!!!")
+                 escreval("")
+             fimse
+             escreva("[0] - VOLTAR ")
+             leia(opcao21)
+             limpatela
+            ate(opcao21 >= 0)
+
+        caso 3       //-------- OPÇÃO DE CONSULTA --------
+
+             repita
+             
+                 escreval("-------CONSULTA-------")
+                 escreval("")
+                 escreva("ID   ")
+                 escreva("NOME   ")
+                 escreva("CARRO   ")
+                 escreval("")
+            
+              para cont de 1 ate qtdvagas passo 1 faca //-------- APRESETA A LISTA DE CARROS ESTACIONADOS--------
+
+                  se(presenca[cont] = 1)entao
+                     escreva(cont,"  ")
+                     escreva(nome[cont],"  ")
+                     escreva(carro[cont],"  ")
+                     escreval("")
+                     senao
+                          escreva(cont,"  ")
+                          escreva("vazio   ")
+                          escreva("vazio   ")
+                          escreval("")
+                   fimse
+              fimpara
+              escreval("")
+              escreva("[0] - VOLTAR ")
+              leia(opcao3)
+              
+               limpatela
+              ate(opcao3 = 0)
+           limpatela
+
+        caso 4       //-------- OPÇÃO DE CONFIGURAÇÃO --------
+
+           opcao4 <- 1
+          se(valorHora > 0) e (valorEntrada > 0)entao //----VERIFICA SE VALORES JÁ FORAM DEFINIDOS------
+           repita
+            escreval("-------CONFIGURAÇAO-------") //--------AVISO QUE VALORES JA ESTÃO DEFINIDOS--------
+            escreval("")
+            escreval("VALORES JÁ DEFINIDOS!!!")
+            escreval("")
+            escreva("PREÇO DE ENTRADA:R$",valorEntrada,",00  ")
+            escreval("PREÇO POR HORA:R$",valorHora,",00")
+            escreval("")
+            escreval("[1] - REDEFINIR   [0] - VOLTAR")
+            leia(opcao4)
+            limpatela
+           ate(opcao4 = 1) ou (opcao4 = 0)
+          fimse
+
+           se(opcao4 = 1)entao
+             escreval("-------CONFIGURAÇAO-------") //----CONFIGURAÇÃO PARA DEFINIÇÃO DE VALORES
+             escreval("")
+             escreva("valor de entrada(R$): ")
+             leia(valorEntrada)
+             escreval("")
+             escreva("valor por hora(R$): ")
+             leia(valorHora)
+             limpatela
+
+             repita
+
+                escreval("-------CONFIGURAÇAO-------")
+                escreval("")
+                escreval("Valores definidos com sucesso")
+                escreval("")
+                escreval("[0] - VOLTAR")
+                leia(opcao4)
+
+                limpatela
+              ate(opcao4 >= 0)
+            fimse
+          fimescolha
+        
+    ate (opcao = 0)
+fimalgoritmo
